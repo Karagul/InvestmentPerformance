@@ -1,44 +1,16 @@
 import FundHistory
-import os
-import csv
+import TransactionHistory
 import datetime
-import pickle
 import matplotlib.pyplot as plt
 import numpy
 
 class FundPerformance():
     def __init__(self):
         self.fundHistory = FundHistory.FundHistory()
-        self.transactions = self.loadHistory()
+        self.transactions = TransactionHistory.TransactionHistory()
 
     def processCLI(self, cli_args=None):
         pass
-
-    def readTransactionsfromCSV(self):
-        transactions = {}
-
-        transactions['ExtendedMarketUnits'] = []
-
-        with open( os.path.join(os.getcwd(), "TransactionHistory.csv")) as f:
-            reader = csv.reader(f)
-
-            # Skip the header
-            next(reader)
-
-            for row in reader:
-                transactions['ExtendedMarketUnits'].append( ( datetime.datetime.strptime(row[0], '%m/%d/%Y'), float(row[4]) ) )
-
-        return transactions
-
-    def saveHistory(self):
-        with open(os.path.join(os.getcwd(), "transactionHistory.pkl"), 'wb') as f:
-            pickle.dump(self.transactions, f)
-
-    def loadHistory(self):
-        with open(os.path.join(os.getcwd(), "transactionHistory.pkl"), 'rb') as f:
-            history = pickle.load(f)
-
-        return history
 
     def calculateBalance(self):
         time = [self.fundHistory.getStartingDate()-datetime.timedelta(1)]
@@ -53,7 +25,7 @@ class FundPerformance():
             newSharesAmount = sharesHeld[-1]
             newContribution = dailyContributionBalance[-1]
 
-            transactions_found = [item[1] for item in self.transactions['ExtendedMarketUnits'] if item[0] == fund_item[0] ]
+            transactions_found = [item[1] for item in self.transactions.getTransactions('ExtendedMarketUnits') if item[0] == fund_item[0] ]
             for trans in transactions_found:
                 newSharesAmount = newSharesAmount + trans
                 newContribution = newContribution + trans * fund_item[1]
