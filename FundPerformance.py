@@ -11,6 +11,9 @@ class FundPerformance():
         self.fundHistory = FundHistory.FundHistory()
         self.transactions = self.loadHistory()
 
+    def processCLI(self, cli_args=None):
+        pass
+
     def readTransactionsfromCSV(self):
         transactions = {}
 
