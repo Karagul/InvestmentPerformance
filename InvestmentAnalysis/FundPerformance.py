@@ -1,5 +1,5 @@
-import FundHistory
-import TransactionHistory
+from InvestmentAnalysis import FundHistory
+from InvestmentAnalysis import TransactionHistory
 import datetime
 import matplotlib.pyplot as plt
 import numpy

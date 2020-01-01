@@ -1,13 +1,7 @@
-import FundPerformance
-import CommandLineParser
+from InvestmentAnalysis import InvestmentAnalyzer
 
 def main():
-    cli_arguments = CommandLineParser.CommandLineParser.parse()
-
-    performance = FundPerformance.FundPerformance()
-    performance.processCLI(cli_arguments)
-    performance.calculateBalance()
-
+    InvestmentAnalyzer.InvestmentAnalyzer.run()
 
 if __name__ == "__main__":
     main()

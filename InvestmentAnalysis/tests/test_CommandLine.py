@@ -1,5 +1,5 @@
 import pytest
-import CommandLineParser
+from InvestmentAnalysis import CommandLineParser
 
 def test_fundHistory():
 
