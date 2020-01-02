@@ -4,6 +4,7 @@ from InvestmentAnalysis import CommandLineParser
 def test_fundHistory():
 
     getBaseArguments = lambda: {
+        'subparser_name': 'manage-fund',
         'new_fund_history': None,
         'fund_history': None,
         'save_fund_history': 'fundHistory.pkl'
@@ -35,6 +36,7 @@ def test_fundHistory():
 def test_transactionHistory():
 
     getBaseArguments = lambda: {
+        'subparser_name': 'manage-transactions',
         'new_transactions': None,
         'transaction_history': None,
         'save_transactions': 'transactionHistory.pkl'

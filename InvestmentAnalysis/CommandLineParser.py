@@ -6,7 +6,7 @@ class CommandLineParser():
     def parse(cli=None):
 
         parser = argparse.ArgumentParser(description="Manage investment performance")
-        sub_parsers = parser.add_subparsers()
+        sub_parsers = parser.add_subparsers(dest='subparser_name')
 
         fund_parser = sub_parsers.add_parser('manage-fund', description='Manages fund history')
         fund_parser.add_argument('--add', dest='new_fund_history', help='Adds history to fund performance')
